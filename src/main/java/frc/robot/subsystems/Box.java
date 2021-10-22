@@ -1,10 +1,10 @@
 package frc.robot.subsystems;
 
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotMap;
@@ -58,6 +58,26 @@ public class Box implements Subsystem {
      * is private since this class is a Singleton. Code should use
      * the {@link #getInstance()} method to get the singleton instance.
      */
+    public Command BoxIntake() {
+        return new RunCommand( () -> set(0.3), this
+        );
+    }
+
+    public Command BoxOutake() {
+        return new RunCommand( () -> set(-1), this
+        );
+    }
+
+    public Command BoxHold() {
+        return new RunCommand( this::setHold, this
+        );
+    }
+
+    public Command BoxStop() {
+        return new RunCommand( () -> set(0.0), this
+        );
+    }
+
     private Box() {
         // TODO: Set the default command, if any, for this subsystem by calling setDefaultCommand(command)
         //       in the constructor or in the robot coordination class, such as RobotContainer.

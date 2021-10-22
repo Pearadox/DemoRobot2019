@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.PerpetualCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.subsystems.Box;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.IMU;
+import frc.robot.subsystems.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,8 +25,11 @@ public class RobotContainer {
   private final Joystick joystick = new Joystick(0);
   private final Joystick operator = new Joystick(1);
 
-  private final Drivetrain drivetrain = Drivetrain.getInstance();
-
+  public static final Drivetrain drivetrain = Drivetrain.getInstance();
+  public static final Box box = Box.getInstance();
+  public static final Intake intake = Intake.getInstance();
+  public static final IMU gyro = IMU.getInstance();
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
